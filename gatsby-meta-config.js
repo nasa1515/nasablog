@@ -74,30 +74,6 @@ module.exports = {
       // ========================================================
       // ========================================================
       {
-        title: 'Picky(글로벌 스킨케어 제품 분석 모바일 앱) 개발',
-        description:
-          '구글 출신 분들이 창업한 스타트업에 인턴십을 하던 중 피버팅을 하게 되면서 저는 1인 개발자로 신규 사업에 참여하게 되었습니다. 5명의 경험이 많은 팀원들과 힘을 합쳐 Picky라는 앱을 개발하고 지속적으로 서비스를 확장해나갔습니다. 이 과정을 통해 실제 서비스의 시작과 성장하는 과정을 경험해볼 수 있었습니다.',
-        techStack: ['flutter', 'nodejs'],
-        thumbnailUrl: 'picky.jpeg',
-        links: {
-          post: '/start-up-app-development',
-          googlePlay: 'https://play.google.com/store/apps/details?id=care.jivaka.picky',
-          appStore: 'https://apps.apple.com/app/picky-skincare-made-smarter/id1504197356',
-        },
-      },
-      {
-        title: '개발 블로그 테마 개발',
-        description:
-          '간단한 테마를 활용하여 개발 블로그를 만들고 운영하다 보니 점점 블로그를 내가 원하는 형태로 만들고 싶게 되었습니다. 입사 전 시기를 활용해서 원하는 기능과 디자인이 있는 블로그 테마를 만들게 되었습니다.',
-        techStack: ['gatsby', 'react'],
-        thumbnailUrl: 'zoomkoding.png',
-        links: {
-          post: '/why-dev-blog',
-          github: 'https://github.com/zoomkoding/college-timetable',
-          demo: 'https://gatsby-starter-zoomkoding.netlify.app',
-        },
-      },
-      {
         title: '2020 우아한테크캠프 참여',
         description:
           '스타트업에서 앱 개발을 하면서 좋은 개발에 대한 갈증이 매우 크던 중에 좋은 기회를 잡게 되어 참여하게 되었습니다. 2달 간 몰입해서 좋은 사람들과 웹 개발을 경험하며, 많이 배우고 성장할 수 있었던 시간이었습니다.',
