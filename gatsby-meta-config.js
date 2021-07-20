@@ -20,6 +20,7 @@ module.exports = {
     social: {
       github: `https://github.com/nasa1515`,
       linkedIn: `https://www.linkedin.com/in/wonseok-lee-60b9011a3`,
+      email: `h43254@gmail.com`,
     },
   },
 
