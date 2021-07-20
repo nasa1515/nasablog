@@ -20,8 +20,6 @@ const IconButtonBar = ({
     switch (icon) {
       case 'post':
         return <DescriptionIcon style={style} />;
-      case 'demo':
-        return <PlayIcon style={style} />;
       case 'github':
         return <GitHubIcon style={style} />;
       case 'googlePlay':
