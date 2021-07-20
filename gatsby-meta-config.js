@@ -42,15 +42,6 @@ module.exports = {
       // ========================================================
       // =======================================================
       {
-        date: '2021.02 ~ 2021.03',
-        activity: '개인 블로그 디자인 및 개발',
-        links: {
-          post: '/zoomkoding-gatsby-blog-introduction',
-          github: 'https://github.com/zoomkoding/college-timetable',
-          demo: 'https://gatsby-starter-zoomkoding.netlify.app',
-        },
-      },
-      {
         date: '2021.03 ~ ',
         activity: '우아한 개발자🚀',
       },

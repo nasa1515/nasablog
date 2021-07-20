@@ -1,6 +1,6 @@
 ---
 title: 네트워크 기초 Part - 1
-date: "2021-06-23 01:00:00"
+date: "2021-06-23 00:00:10"
 author: 나사
 tags: NETWORK
 categories: NETWORK
