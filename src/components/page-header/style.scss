@@ -1,4 +1,4 @@
-@use '../../styles/mixins' as *;
+@use '../../styles/mixins'as *;
 
 .page-header-wrapper {
   display: flex;
@@ -15,13 +15,34 @@
 
     .link {
       font-weight: 700;
-      font-size: 20px;
-      color: #000000;
+      font-size: 17px;
+      color: var(--primary-text-color);
+
+
+      @include md {
+        font-weight: 700;
+        font-size: 20px;
+      }
     }
 
     .trailing-section {
+      display: flex;
+      align-items: center;
+
       .link {
-        margin-left: 20px;
+        margin-left: 10px;
+
+        @include md {
+          margin-left: 20px;
+        }
+      }
+
+      .dark-mode-switch {
+        margin-left: 3px;
+
+        @include md {
+          margin-left: 13px;
+        }
       }
     }
   }
