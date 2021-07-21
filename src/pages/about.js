@@ -32,7 +32,7 @@ export const pageQuery = graphql`
           bio {
             role
             description
-            isVideo
+            thumbnail
           }
           social {
             github
@@ -48,6 +48,7 @@ export const pageQuery = graphql`
             links {
               post
               github
+              demo
               googlePlay
               appStore
             }
@@ -61,6 +62,7 @@ export const pageQuery = graphql`
             links {
               post
               github
+              demo
               googlePlay
               appStore
             }
