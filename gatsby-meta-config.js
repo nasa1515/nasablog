@@ -9,13 +9,13 @@ module.exports = {
       repo: `nasa1515/nasablog`,
     },
   },
-  ga: 'UA-134826755-2', // Google Analytics Tracking ID
+  ga: '0', // Google Analytics Tracking ID
   author: {
     name: `NASA1515`,
     bio: {
       role: `Data Engineer`,
       description: ['데이터를 좋아하는', '엔지니어 특화'],
-      isVideo: true,
+      thumbnail: 'author.gif',
     },
     social: {
       github: `https://github.com/nasa1515`,
@@ -37,6 +37,7 @@ module.exports = {
           post: '',
           googlePlay: '',
           appStore: '',
+          demo: '',
         },
       },
       // ========================================================
@@ -60,6 +61,7 @@ module.exports = {
           github: '',
           googlePlay: '',
           appStore: '',
+          demo: '',
         },
       },
       // ========================================================
