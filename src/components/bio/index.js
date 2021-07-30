@@ -7,6 +7,7 @@ import './style.scss';
 
 const Bio = ({ author, language = 'ko' }) => {
   const { bio, social, name } = author;
+
   if (!author) return null;
   return (
     <div className="bio-wrapper">

@@ -1,6 +1,6 @@
 module.exports = {
-  title: `나사블로그`,
-  description: `나사블로그`,
+  title: `나사 기술 블로그`,
+  description: `나사 기술 블로그`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
   siteUrl: `https://nasa1515.tech`,
   ogImage: `/PINGGU.jpg`, // Path to your image you placed in the 'static' folder
@@ -14,7 +14,7 @@ module.exports = {
     name: `NASA1515`,
     bio: {
       role: `Data Engineer`,
-      description: ['데이터를 좋아하는', '엔지니어 특화'],
+      description: ['데이터를 좋아하는', '모든 걸 기록하는'],
       thumbnail: 'author.gif',
     },
     social: {
@@ -37,6 +37,7 @@ module.exports = {
           post: '',
           googlePlay: '',
           appStore: '',
+          demo: '',
         },
       },
       // ========================================================
@@ -60,6 +61,7 @@ module.exports = {
           github: '',
           googlePlay: '',
           appStore: '',
+          demo: '',
         },
       },
       // ========================================================
