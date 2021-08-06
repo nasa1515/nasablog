@@ -64,9 +64,9 @@
   -webkit-text-size-adjust: 100%;
   line-height: 1.5;
   color: var(--primary-text-color);
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif,
+  font-family: "Noto Sans KR", "Georama", -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif,
     Apple Color Emoji, Segoe UI Emoji;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   line-height: 1.5;
   word-wrap: break-word;
@@ -911,7 +911,7 @@
 .markdown .blob-code-inner {
   overflow: visible;
   font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
-  font-size: 12px;
+  font-size: 15px;
   color: #24292e;
   word-wrap: normal;
   white-space: pre;
@@ -1002,7 +1002,7 @@
   //   padding-left: 35px;
   //   content: 'Table of Contents';
   //   font-weight: 500;
-  //   font-size: 15px;
+  font-size: 20px;
   //   margin-bottom: 3px;
   // }
 

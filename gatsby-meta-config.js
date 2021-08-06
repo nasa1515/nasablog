@@ -9,12 +9,12 @@ module.exports = {
       repo: `nasa1515/nasablog`,
     },
   },
-  ga: 'UA-134826755-2', // Google Analytics Tracking ID
+  ga: 'UA-192755809-1', // Google Analytics Tracking ID
   author: {
     name: `NASA1515`,
     bio: {
       role: `Data Engineer`,
-      description: ['데이터를 좋아하는', '모든 걸 기록하는'],
+      description: ['어려운 것들을', '모든 걸 기록하는'],
       thumbnail: 'author.gif',
     },
     social: {
