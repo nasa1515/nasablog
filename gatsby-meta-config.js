@@ -1,9 +1,9 @@
 module.exports = {
-  title: `나사 기술 블로그`,
-  description: `나사 기술 블로그`,
+  title: `NASA1515 이원석 블로그`,
+  description: `NASA1515 이원석 블로그`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
   siteUrl: `https://nasa1515.tech`,
-  ogImage: `/PINGGU.jpg`, // Path to your image you placed in the 'static' folder
+  ogImage: `/topicon.jpg`, // Path to your image you placed in the 'static' folder
   comments: {
     utterances: {
       repo: `nasa1515/nasablog`,
@@ -11,10 +11,10 @@ module.exports = {
   },
   ga: 'UA-192755809-1', // Google Analytics Tracking ID
   author: {
-    name: `NASA1515`,
+    name: `이원석`,
     bio: {
       role: `Data Engineer`,
-      description: ['어려운 것들을', '모든 걸 기록하는'],
+      description: ['새로운 것을 좋아하는', '모든 걸 기록하는'],
       thumbnail: 'author.gif',
     },
     social: {
