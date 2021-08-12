@@ -45,12 +45,6 @@ export const pageQuery = graphql`
           timestamps {
             date
             activity
-            links {
-              post
-              github
-              googlePlay
-              appStore
-            }
           }
 
           projects {
@@ -58,12 +52,7 @@ export const pageQuery = graphql`
             description
             techStack
             thumbnailUrl
-            links {
-              post
-              github
-              googlePlay
-              appStore
-            }
+
           }
         }
       }

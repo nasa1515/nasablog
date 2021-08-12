@@ -32,19 +32,12 @@ module.exports = {
       {
         date: '',
         activity: '',
-        links: {
-          github: '',
-          post: '',
-          googlePlay: '',
-          appStore: '',
-          demo: '',
-        },
       },
       // ========================================================
       // =======================================================
       {
-        date: '2021.03 ~ ',
-        activity: '우아한 개발자🚀',
+        date: '2020.12 ~ ',
+        activity: 'Cloocus Data Engineer 🚀',
       },
     ],
 
@@ -56,13 +49,6 @@ module.exports = {
         description: '',
         techStack: ['', ''],
         thumbnailUrl: '',
-        links: {
-          post: '',
-          github: '',
-          googlePlay: '',
-          appStore: '',
-          demo: '',
-        },
       },
       // ========================================================
       // ========================================================
@@ -70,12 +56,8 @@ module.exports = {
         title: 'Cloocus',
         description:
           '스타트업에서 앱 개발을 하면서 좋은 개발에 대한 갈증이 매우 크던 중에 좋은 기회를 잡게 되어 참여하게 되었습니다. 2달 간 몰입해서 좋은 사람들과 웹 개발을 경험하며, 많이 배우고 성장할 수 있었던 시간이었습니다.',
-        techStack: ['react', 'nodejs'],
-        thumbnailUrl: 'woowa-tech.png',
-        links: {
-          post: '/woowa-tech-camp-final',
-          github: 'https://github.com/woowa-techcamp-2020/bmart-6',
-        },
+        techStack: ['Data Engineer', 'Azure', 'GCP', 'AWS', 'Hadoop', 'Spark'],
+        thumbnailUrl: 'cloocus.png',
       },
     ],
   },
