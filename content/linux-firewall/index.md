@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 리눅스 Firewall
+title: Firewall [LINUX]
 date: "2021-06-23 00:00:54"
 author: nasa1515
 tags: LINUX

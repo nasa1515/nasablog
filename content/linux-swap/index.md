@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 리눅스 SWAP
+title: SWAP [LINUX]
 date: "2021-06-23 00:00:52"
 author: nasa1515
 tags: LINUX

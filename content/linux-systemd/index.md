@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 리눅스 SYSTEMD
+title: SYSTEMD [LINUX]
 date: "2021-06-23 00:00:53"
 author: nasa1515
 tags: LINUX

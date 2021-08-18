@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 리눅스 LVM
+title: LVM [LINUX]
 date: "2021-06-23 00:01:10"
 author: nasa1515
 tags: LINUX

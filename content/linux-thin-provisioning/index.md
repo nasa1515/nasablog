@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 리눅스 This-Provisioning
+title: This-Provisioning [LINUX]
 date: "2021-06-23 00:01:15"
 author: nasa1515
 tags: LINUX

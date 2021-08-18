@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 리눅스 권한 설정 chmod, Setuid...
+title: 권한 설정 chmod, Setuid... [LINUX]
 date: "2021-06-23 00:00:30"
 author: nasa1515
 tags: LINUX

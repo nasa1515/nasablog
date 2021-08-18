@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 리눅스 NFS
+title: NFS [LINUX]
 date: "2021-06-23 00:00:59"
 author: nasa1515
 tags: LINUX

@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 리눅스 패키지 관리자 RPM, YUM
+title: 패키지 관리자 RPM, YUM [LINUX]
 date: "2021-06-23 00:00:56"
 author: nasa1515
 tags: LINUX

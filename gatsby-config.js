@@ -73,7 +73,7 @@ module.exports = {
         lang: `en`,
         display: `standalone`,
         start_url: `/`,
-        icon: `static/PINGGU.jpg`,
+        icon: `static/topicon.jpg`,
       },
     },
     {

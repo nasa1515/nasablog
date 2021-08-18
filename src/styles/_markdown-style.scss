@@ -284,9 +284,10 @@
 
 .markdown code,
 .markdown pre {
-  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  font-family: "Noto Sans KR", SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
   font-size: 12px;
 }
+
 
 .markdown code.language-text {
   background: rgba(135, 131, 120, 0.15);
@@ -294,8 +295,10 @@
   border-radius: 3px;
   font-size: 85%;
   padding: 0.2em 0.4em;
-  font-family: "Noto Sans KR";
+  font-family: "Noto Sans KR", SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
 }
+
+
 
 .markdown pre {
   margin-top: 0;

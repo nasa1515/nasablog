@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 리눅스 Access Control List (ACL)
+title: Access Control List (ACL) [LINUX]
 date: "2021-06-23 00:00:40"
 author: nasa1515
 tags: LINUX

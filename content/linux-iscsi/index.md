@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 리눅스 ISCSI
+title: ISCSI [LINUX]
 date: "2021-06-23 00:01:25"
 author: nasa1515
 tags: LINUX
