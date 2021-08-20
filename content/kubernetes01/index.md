@@ -55,51 +55,54 @@ categories: Kubernetes
 
 * ``Job, CronJob``을 이용해 배치성 작업을 할 수도 있습니다.
 
----
+<br/>
 
 ### CLOUD 지원
 
 ![스크린샷, 2020-08-19 18-16-09](https://user-images.githubusercontent.com/69498804/90616176-12411800-e248-11ea-8e9e-b79e49051a66.png)
 
-* 쿠버네티스는 부하에 따라 자동으로 서버를 늘리는 기능 ``AutoScaling``을 가지고 있으며  
-* IP를 할당받아 로드밸런스LoadBalancer로 사용할 수 있습니다. 
+* 쿠버네티스는 부하에 따라 자동으로 서버를 늘리는 기능 ``AutoScaling`` 기능을 가지고 있으며 LoadBalancer로 사용할 수 있습니다. 
 
-* 외부 스토리지를 컨테이너 내부 디렉토리에 마운트하여 사용하는 것도 가능한데  
-이를 위해 클라우드 별로 적절한 API를 사용하는 모듈이 필요합니다.
+* 외부 스토리지를 컨테이너 내부에 마운트해 사용도 가능한데 이를 위해 클라우드 별로 적절한 API를 사용하는 모듈이 필요합니다.
 
 * 쿠버네티스는 ``Cloud Controller``를 이용하여 클라우드 연동을 손쉽게 확장할 수 있습니다.  
-``AWS, GCP, AZURE``는 물론 ``다양한 모듈``을 제공하여  
-관리자는 동일한 설정 파일을 서로 다른 클라우드에서 동일하게 사용할 수 있습니다.
+``AWS, GCP, AZURE``는 물론 ``다양한 모듈``을 제공해 동일한 설정 파일을 서로 다른 클라우드에서 동일하게 사용할 수 있습니다.
 
----
 
-### NAMESPACE & LABEL <a name="a3"></a>
+<br/>
+
+### NAMESPACE & LABEL
 
 ![스크린샷, 2020-08-20 09-42-17](https://user-images.githubusercontent.com/69498804/90703714-722bd300-e2c9-11ea-927f-e4e2e4fdc719.png)
 
 * 쿠버네티스에서는 1개의 클러스터를 ``논리적으로 구분``하여 사용할 수 있습니다. 
 
-* 하나의 클러스터에 다양한 프레임워크와 애플리케이션을 설치하기 때문에  
-기본(system, default)외에 여러 개의 네임스페이스를 사용하는 것이 당연합니다.   
+* 하나의 클러스터에 다양한 프레임워크와 애플리케이션을 설치하기 때문에 기본(system, default)외에 여러 개의 네임스페이스를 사용하는 것이 당연합니다.   
 
 * 더 세부적으로 ``라벨 기능``을 적극적으로 사용하여 유연하고, 확장성 있게 리소스를 관리할 수 있습니다.
 
----
-
-### Auto Scaling <a name="a4"></a>  
 
 
+<br/>
+
+### Auto Scaling
 
 
-* k8s는 ``CPU``, ``memory`` 사용량에 따른 확장은 기본이고 현재 접속자 수와 같은 값을 사용할 수도 있습니다.  
+
+
+k8s는 ``CPU``, ``memory`` 사용량에 따른 확장은 기본이고 현재 접속자 수와 같은 값을 사용할 수도 있습니다.  
 
 총 세개의 방식이 대표적인데 아래와 같습니다.  
 
 * ``Horizontal Pod Autoscaler(HPA)`` : 컨테이너의 개수를 조정
 ![스크린샷, 2020-08-20 09-47-14](https://user-images.githubusercontent.com/69498804/90703962-23326d80-e2ca-11ea-934d-86b32cfdd145.png)
 
+<br/>
+
 * ``Vertical Pod Autoscaler(VPA)``: 컨테이너의 리소스 할당량을 조정 
 ![스크린샷, 2020-08-20 09-50-15](https://user-images.githubusercontent.com/69498804/90704099-8f14d600-e2ca-11ea-9e20-1cd1837fa9b2.png)
+
+<br/>
 
 * ``Cluster Autosclaer(CA)`` : 서버 개수(노드 수) 를 조정 
 
