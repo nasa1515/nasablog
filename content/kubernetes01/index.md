@@ -1,7 +1,7 @@
 ---
 emoji: 🤦‍♂️
 title: 쿠버네티스란? [Kubernetes]
-date: "2021-06-26 00:06:25"
+date: "2021-06-29 00:06:25"
 author: nasa1515
 tags: Kubernetes
 categories: Kubernetes
