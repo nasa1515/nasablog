@@ -7,7 +7,7 @@ tags: LINUX
 categories: LINUX
 ---
 
-## 머리말 
+머리말 
 
 저는 2016년? 정도부터 IDC Infra와 Backend FrameWork을 다루는 엔지니어로 약 2년정도 일을 했었지만  
 군대의 공백 때문에 실무에서 쌓아놨었던 지식들이 희미해지기 시작했습니다.  

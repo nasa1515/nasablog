@@ -9,6 +9,7 @@ categories: DOCKER
 
 
 머리말  
+
  이번 포스트에서는 Docker에서 조금도 간편화된 방법으로 이미지를 제작할 수 있는 Dockerfile에 대해서 포스팅합니다.
 
 
