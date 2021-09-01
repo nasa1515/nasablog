@@ -117,7 +117,7 @@ rules 항목 앞에 ``d``를 붙이면 됩니다. 디렉토리에만 가능하�
 
 * ``getfacl`` 명령어로 파일이나 디렉터리에 설정된 ACL 을 확인할 수 있습니다. 시스템 로그가 쌓이는 /var/log 의 ACL 을 확인해 보겠습니다.
 
-	```mde
+	```md
 	# getfacl /var/log
  
 	getfacl: Removing leading '/' from absolute path names

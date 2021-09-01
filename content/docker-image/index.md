@@ -47,7 +47,7 @@ categories: DOCKER
 
 * ``docker images`` 명령어를 사용해 현재 HOST가 가지고 있는 이미지를 확인 할 수 있습니다. 
 
-    ```ㅊㄴ
+    ```cs
     nasa1515@nasa:~$ docker images
     REPOSITORY          TAG                 IMAGE ID            CREATED                 SIZE
     hello-world         latest              bf756fb1ae65        7 months ago            13.3kB
