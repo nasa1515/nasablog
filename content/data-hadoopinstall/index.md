@@ -90,7 +90,7 @@ categories: DATA
     RHA 공개키는 사용자 계정의 홈 디렉터리에 있는 .ssh 폴더에 생성됩니다.  
     생성된 공개키를 ssh-copy-id 명령으로 전서버에 [master도] 복사합니다. 
 
-    ```
+    ```cs
     [hadoop@hadoop-master ~]$ ssh-copy-id -i /home/hadoop/.ssh/id_rsa.pub hadoop@hadoop-worker
     [hadoop@hadoop-master ~]$ ssh-copy-id -i /home/hadoop/.ssh/id_rsa.pub hadoop@hadoop-worker2
      [hadoop@hadoop-master ~]$ ssh-copy-id -i /home/hadoop/.ssh/id_rsa.pub hadoop@hadoop-master
