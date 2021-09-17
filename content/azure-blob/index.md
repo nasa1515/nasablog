@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: Storage Account, Azure BLOG! [AZURE]
+title: "[AZURE] Storage Account, Azure BLOG!"
 date: "2021-07-30 00:34:25"
 author: nasa1515
 tags: AZURE

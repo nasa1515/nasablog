@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: AZURE Cloud Shell 'Select Directory...' Error From VSCODE [AZURE]
+title: "[AZURE] AZURE Cloud Shell 'Select Directory...' Error From VSCODE"
 date: "2021-08-01 00:40:25"
 author: nasa1515
 tags: AZURE Error-Report

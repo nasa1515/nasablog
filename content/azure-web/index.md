@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: LAPM 서비스 구축하기 [AZURE]
+title: "[AZURE] LAPM 서비스 구축하기"
 date: "2021-08-01 00:41:25"
 author: nasa1515
 tags: AZURE

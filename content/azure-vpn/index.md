@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: Virtual Network Gateway - VPN [AZURE]
+title: "[AZURE] Virtual Network Gateway - VPN"
 date: "2021-08-01 00:38:25"
 author: nasa1515
 tags: AZURE

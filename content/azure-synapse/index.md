@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: Azure Synapse Analytics [AZURE] [DATA]
+title: "[AZURE] [DATA] Azure Synapse Analytics"
 date: "2021-08-02 00:41:25"
 author: nasa1515
 tags: AZURE DATA

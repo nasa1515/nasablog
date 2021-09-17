@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: Application GateWay, LoadBalancer [AZURE]
+title: "[AZURE] Application GateWay, LoadBalancer"
 date: "2021-08-01 00:34:25"
 author: nasa1515
 tags: AZURE

@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: RG 생성, Resource 생성, TAGING, Resoureces 이동하기 [AZURE]
+title: "[AZURE] RG 생성, Resource 생성, TAGING, Resoureces 이동하기"
 date: "2021-07-30 00:30:25"
 author: nasa1515
 tags: AZURE

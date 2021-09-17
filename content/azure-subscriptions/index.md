@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: Subscriptions, management Group, Resoucre Group [AZURE]
+title: "[AZURE] Subscriptions, management Group, Resoucre Group"
 date: "2021-07-29 00:06:25"
 author: nasa1515
 tags: AZURE

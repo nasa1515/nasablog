@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 가상 머신 확장 집합 (VMSS) [AZURE]
+title: "[AZURE] 가상 머신 확장 집합 (VMSS)"
 date: "2021-08-01 00:37:25"
 author: nasa1515
 tags: AZURE

@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: AZ-104 [Microsoft Azure Administrator] 자격증 합격 후기 [AZURE]
+title: "[AZURE] AZ-104 [Microsoft Azure Administrator] 자격증 합격 후기"
 date: "2021-07-26 00:06:25"
 author: nasa1515
 tags: AZURE
