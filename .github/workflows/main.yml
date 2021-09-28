@@ -17,7 +17,7 @@ jobs:
         run: npm install
 
       - name: gatsby build
-        run: gatsby build
+        run: npm build
         env:
           GH_API_KEY: ${{ secrets.API_KEY }}
 
