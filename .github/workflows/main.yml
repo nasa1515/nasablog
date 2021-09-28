@@ -21,6 +21,9 @@ jobs:
         env:
           GH_API_KEY: ${{ secrets.API_KEY }}
 
+      - name: CNAME copy
+        run: cp CNAME public/
+
       - name: deploy
         uses: maxheld83/ghpages@v0.2.1
         env:
