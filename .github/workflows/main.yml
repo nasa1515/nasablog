@@ -26,4 +26,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_PAT: ${{ secrets.API_KEY }}
-          BUILD_DIR: '.public'
+          BUILD_DIR: '/build'
