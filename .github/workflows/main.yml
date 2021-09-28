@@ -14,10 +14,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: packages install
-        run: yarn install
+        run: npm install
 
       - name: gatsby build
-        run: yarn build
+        run: npm build
         env:
           GH_API_KEY: ${{ secrets.API_KEY }}
 
