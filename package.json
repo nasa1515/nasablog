@@ -58,7 +58,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "copy": "cp CNAME public/",
-    "deploy": "gatsby build && npm run copy && cp CNAME ./public && gh-pages -d public -b gh-pages",
+    "deploy": "gatsby build && npm run copy && cp CNAME .public && gh-pages -d public -b gh-pages",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
