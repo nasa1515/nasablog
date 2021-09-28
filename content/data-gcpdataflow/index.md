@@ -1,7 +1,7 @@
 ---
 emoji: 🤦‍♂️
 title: "[DATA] - GCP DataFlow, csv from GCS to BigQuery With Python"
-date: "2021-09-01 00:39:25"
+date: "2021-09-02 00:39:25"
 author: nasa1515
 tags: DATA GCP
 categories: DATA GCP
