@@ -73,7 +73,7 @@ module.exports = {
         lang: `en`,
         display: `standalone`,
         start_url: `/`,
-        icon: `topicon.jpg`,
+        icon: `static/topicon.jpg`,
       },
     },
     {
