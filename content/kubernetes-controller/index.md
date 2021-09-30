@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: "[Kubernetes] - 쿠버네티스의 컨트롤러
+title: "[Kubernetes] - 쿠버네티스의 컨트롤러"
 date: "2021-06-29 00:07:18"
 author: nasa1515
 tags: Kubernetes
