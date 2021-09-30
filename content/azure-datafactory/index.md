@@ -24,6 +24,18 @@ categories: AZURE DATA
 
 이론내용
 
+---
+
+## DataFactory 생성.
+
+[공식DOCS](https://docs.microsoft.com/ko-kr/azure/data-factory/quickstart-create-data-factory-portal)
+
+<br/>
+
+DataFactory를 동일 RG등의 개인설정에 맞춰서 생성합니다.
+
+![image](https://user-images.githubusercontent.com/69498804/135404274-8671e65e-26c3-4ffa-b589-9ab418aba4a9.png)
+
 
 
 
@@ -40,12 +52,14 @@ Azrue VM 생성 (Azure에서 제공해주는 Oracle DB Image를 사용합니다.
 
 ```cs
 az vm create \
-    --resource-group DPRG \
+    --resource-group nasatest \
     --name nasa-oracle \
-    --image Oracle:oracle-database-Ee:12.1.0.2:latest \
+    --image Oracle:oracle-database-19-3:oracle-database-19-0904:latest \
     --size Standard_DS2_v2 \
     --admin-username nasa1515 \
-    --admin-password @dldnjstjr123
+    --admin-password @dldnjstjr123 \
+    --public-ip-address-allocation static \
+    --public-ip-address-dns-name nasa-dns
 ```
 
 <br/>
@@ -53,7 +67,7 @@ az vm create \
 Oracle Data FILE용 디스크 생성
 
 ```cs
-az vm disk attach --name oradata01 --new --resource-group DPRG --size-gb 64 --sku StandardSSD_LRS --vm-name nasa-oracle
+az vm disk attach --name disk01 --new --resource-group nasatest --size-gb 64 --sku StandardSSD_LRS --vm-name nasa-oracle
 ```
 
 <br/>
@@ -63,26 +77,12 @@ az vm disk attach --name oradata01 --new --resource-group DPRG --size-gb 64 --sk
 
 ```cs
 az network nsg rule create \
-    --resource-group DPRG \
+    --resource-group nasatest \
     --nsg-name nasa-oracleNSG \
     --name nasa-oracle \
     --protocol tcp \
     --priority 1001 \
     --destination-port-range 1521
-```
-
-<br/>
-
-저는 Oracle EM Express도 사용하기 때문에 해당 방화벽도 수정해줍니다.
-
-```cs
-az network nsg rule create \
-    --resource-group DPRG \
-    --nsg-name nasa-oracleNSG \
-    --name nasa-oracle \
-    --protocol tcp \
-    --priority 1002 \
-    --destination-port-range 5502
 ```
 
 
@@ -93,7 +93,7 @@ az network nsg rule create \
 ```cs
 # sudo su -
 # ls -alt /dev/sd*|head -1
-# [root@nasa-oracle ~]# ls -alt /dev/sd*|head -1
+[root@nasa-oracle ~]# ls -alt /dev/sd*|head -1
 brw-rw----. 1 root disk 8, 32 Sep 29 07:31 /dev/sdc
 ```
 
@@ -131,8 +131,6 @@ fstab 및 hosts 파일 수정해줍니다
 ```cs
 # echo "/dev/sdc1               /u02                    ext4    defaults        0 0" >> /etc/fstab
 # echo "<Public IP> <VMname>.eastus.cloudapp.azure.com <VMname>" >> /etc/hosts
-# sed -i 's/$/\.eastus\.cloudapp\.azure\.com &/' /etc/hostname
-# sed -i 's/$/\.Korea Central\.cloudapp\.azure\.com &/' /etc/hostname
 ```
 
 
@@ -141,9 +139,9 @@ fstab 및 hosts 파일 수정해줍니다
 VM 내의 방화벽 Port를 열어줍니다.
 
 ```cs
-firewall-cmd --zone=public --add-port=1521/tcp --permanent
-firewall-cmd --zone=public --add-port=5502/tcp --permanent
-firewall-cmd --reload
+# firewall-cmd --zone=public --add-port=1521/tcp --permanent
+# firewall-cmd --zone=public --add-port=5502/tcp --permanent
+# firewall-cmd --reload
 ```
 
 <br/>
@@ -186,25 +184,24 @@ The command completed successfully
 <br/>
 
 
-DB 생성도우미 실행
+DB 생성도우미로 Database 생성.
 
 ```cs
 dbca -silent \
    -createDatabase \
    -templateName General_Purpose.dbc \
-   -gdbname cdb1 \
-   -sid cdb1 \
+   -gdbname nasatest \
+   -sid nasatest \
    -responseFile NO_VALUE \
    -characterSet AL32UTF8 \
-   -sysPassword Dldnjstjr123 \
-   -systemPassword Dldnjstjr123 \
-   -createAsContainerDatabase true \
-   -numberOfPDBs 1 \
-   -pdbAdminPassword Dldnjstjr123 \
+   -sysPassword @dldnjstjr123 \
+   -systemPassword @dldnjstjr123 \
+   -createAsContainerDatabase false \
    -databaseType MULTIPURPOSE \
    -automaticMemoryManagement false \
    -storageType FS \
-   -datafileDestination "/u01/app/oracle/oradata"
+   -datafileDestination "/u02/oradata/" \
+   -ignorePreReqs
 
 
 
@@ -235,33 +232,135 @@ Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/oratest1/oratest1.log" fo
 [oracle@nasa-oracle ~]$
 ```
 
-오라클 환경 변수 설정
-
-```CS
-# ORACLE_SID=oratest1; export ORACLE_SID
-# echo "export ORACLE_SID=oratest1" >> ~/.bashrc
-```
-
-
-Oracle EM Express 연결 
-
-```
-# sqlplus sys as sysdba
-# exec DBMS_XDB_CONFIG.SETHTTPSPORT(5502);
-
 
 <br/>
 
----
+오라클 환경 변수 설정
+
+```CS
+# ORACLE_SID=nasatest; export ORACLE_SID
+# echo "export ORACLE_SID=nasatest" >> ~/.bashrc
+```
+
+<br/>
+
+Oracle db init 등록
+
+```cs
+# sed -i 's/:N/:Y/' /etc/oratab
+```
+
+<br/>
+
+/etc/init.d/dbora 파일 생성 후 아래 내용 추가
+
+```cs
+#!/bin/sh
+# chkconfig: 345 99 10
+# Description: Oracle auto start-stop script.
+#
+# Set ORA_HOME to be equivalent to $ORACLE_HOME.
+ORA_HOME=/u01/app/oracle/product/19.0.0/dbhome_1
+ORA_OWNER=oracle
+
+case "$1" in
+'start')
+    # Start the Oracle databases:
+    # The following command assumes that the Oracle sign-in
+    # will not prompt the user for any values.
+    # Remove "&" if you don't want startup as a background process.
+    su - $ORA_OWNER -c "$ORA_HOME/bin/dbstart $ORA_HOME" &
+    touch /var/lock/subsys/dbora
+    ;;
+
+'stop')
+    # Stop the Oracle databases:
+    # The following command assumes that the Oracle sign-in
+    # will not prompt the user for any values.
+    su - $ORA_OWNER -c "$ORA_HOME/bin/dbshut $ORA_HOME" &
+    rm -f /var/lock/subsys/dbora
+    ;;
+esac
+```
+
+<br/>
+
+권한 변경 및 Link 생성
+
+```cs
+# chgrp dba /etc/init.d/dbora
+# chmod 750 /etc/init.d/dbora
+# ln -s /etc/init.d/dbora /etc/rc.d/rc0.d/K01dbora
+# ln -s /etc/init.d/dbora /etc/rc.d/rc3.d/S99dbora
+# ln -s /etc/init.d/dbora /etc/rc.d/rc5.d/S99dbora
+```
 
 
-## DataFactory 생성
+Oracle Develop 연결을 위한 DB User 생성. (DataFactory에서는 sys user로 바로 연결이 되지 않습니다.)
 
-DataFactory 생성 부분은 [다음링크]()를 참고해서 생성하시면 됩니다!.
+```cs
+# sqlplus sys as sysdba
 
-* 저는 아래와 같이 Private link 전용 DataFactory를 하나 생성했습니다.
+SQL*Plus: Release 19.0.0.0.0 - Production on Thu Sep 30 05:44:51 2021
+Version 19.3.0.0.0
 
-    ![image](https://user-images.githubusercontent.com/69498804/135217439-ee31ed66-0ed8-4892-8b5b-048663f4674d.png)
+Copyright (c) 1982, 2019, Oracle.  All rights reserved.
+
+Enter password:
+
+Connected to:
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.3.0.0.0
+
+SQL> CREATE USER tester1 IDENTIFIED BY qwer1234;
+User created.
+
+SQL> grant all privileges to tester1;
+Grant succeeded.
+
+SQL> exit
+```
+
+<br/>
+
+생성한 DB USER로 접속해 Test 데이터 생성
+
+```cs
+# sqlplus tester1
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Thu Sep 30 05:42:44 2021
+Version 19.3.0.0.0
+
+Copyright (c) 1982, 2019, Oracle.  All rights reserved.
+
+Enter password:
+
+Connected to:
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.3.0.0.0
+
+SQL> CREATE TABLE test ( seq NUMBER(4)  NOT NULL );
+Table created.
+
+SQL> insert into test values (1) ;
+1 row created.
+
+SQL> insert into test values (2) ;
+1 row created.
+
+SQL> insert into test values (3) ;
+1 row created.
+
+SQL> select * from test;
+
+       SEQ
+----------
+         1
+         2
+         3
+```
+
+<br/>
 
 
 
