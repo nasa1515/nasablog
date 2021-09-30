@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: "[Kubernetes] - 쿠버네티스의 컴포넌트
+title: "[Kubernetes] - 쿠버네티스의 컴포넌트"
 date: "2021-06-29 00:07:13"
 author: nasa1515
 tags: Kubernetes
