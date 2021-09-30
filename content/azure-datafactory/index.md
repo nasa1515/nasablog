@@ -42,12 +42,10 @@ Azrue VM 생성 (Azure에서 제공해주는 Oracle DB Image를 사용합니다.
 az vm create \
     --resource-group DPRG \
     --name nasa-oracle \
-    --image Oracle:oracle-database-19-3:oracle-database-19-0904:latest \
+    --image Oracle:oracle-database-Ee:12.1.0.2:latest \
     --size Standard_DS2_v2 \
     --admin-username nasa1515 \
-    --admin-password @dldnjstjr123 \
-    --public-ip-address-allocation static \
-    --public-ip-address-dns-name nasa-oracle
+    --admin-password @dldnjstjr123
 ```
 
 <br/>
@@ -194,18 +192,20 @@ DB 생성도우미 실행
 dbca -silent \
    -createDatabase \
    -templateName General_Purpose.dbc \
-   -gdbname oratest1 \
-   -sid oratest1 \
+   -gdbname cdb1 \
+   -sid cdb1 \
    -responseFile NO_VALUE \
    -characterSet AL32UTF8 \
    -sysPassword Dldnjstjr123 \
    -systemPassword Dldnjstjr123 \
-   -createAsContainerDatabase false \
+   -createAsContainerDatabase true \
+   -numberOfPDBs 1 \
+   -pdbAdminPassword Dldnjstjr123 \
    -databaseType MULTIPURPOSE \
    -automaticMemoryManagement false \
    -storageType FS \
-   -datafileDestination "/u02/oradata/" \
-   -ignorePreReqs
+   -datafileDestination "/u01/app/oracle/oradata"
+
 
 
 dbca -ignorePrereqFailure -silent -createDatabase -templateName General_Purpose.dbc -gdbName ORCL -nodeinfo node1,node2 -characterset AL32UTF8
