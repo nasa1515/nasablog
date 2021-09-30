@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: Jenkins로 Dvmn 앱 이미지 자동 빌드 및 푸시하기 [DevOps]
+title: "[DEVOPS] - Jenkins로 Dvmn 앱 이미지 자동 빌드 및 푸시하기"
 date: "2021-08-08 00:39:25"
 author: nasa1515
 tags: DevOps

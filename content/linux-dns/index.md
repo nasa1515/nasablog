@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: DNS [LINUX]
+title: "[LINUX] - DNS"
 date: "2021-06-23 00:00:58"
 author: nasa1515
 tags: LINUX

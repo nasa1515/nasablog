@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 리눅스 기초 [LINUX]
+title: "[LINUX] - 리눅스 기초"
 date: "2021-06-23 00:00:00"
 author: nasa1515
 tags: LINUX

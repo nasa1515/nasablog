@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: DOCKER란? [DOCKER]
+title: "[DOCKER] - DOCKER란?"
 date: "2021-06-26 00:06:25"
 author: nasa1515
 tags: DOCKER

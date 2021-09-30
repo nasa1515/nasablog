@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: Shell Script - 정규표현식 [LINUX]
+title: "[LINUX] - Shell Script - 정규표현식"
 date: "2021-06-28 00:15:25"
 author: nasa1515
 tags: LINUX

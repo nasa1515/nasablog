@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 보안 취약점 검사를 위한 Dvmn 앱 자동 배포하기 [DevOps]
+title: "[DEVOPS] - 보안 취약점 검사를 위한 Dvmn 앱 자동 배포하기"
 date: "2021-08-07 00:36:25"
 author: nasa1515
 tags: DevOps

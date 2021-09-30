@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: SMB [LINUX]
+title: "[LINUX] - SMB"
 date: "2021-06-23 00:01:00"
 author: nasa1515
 tags: LINUX

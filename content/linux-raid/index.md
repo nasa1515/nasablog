@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: RAID [LINUX]
+title: "[LINUX] - RAID"
 date: "2021-06-23 00:01:05"
 author: nasa1515
 tags: LINUX

@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: Partition [LINUX]
+title: "[LINUX] - Partition"
 date: "2021-06-23 00:00:51"
 author: nasa1515
 tags: LINUX

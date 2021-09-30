@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: Hadoop 3.3.0 Full Distribute mode infra 구축 [DATA]
+title: "[DATA] - Hadoop 3.3.0 Full Distribute mode infra 구축"
 date: "2021-08-15 00:39:25"
 author: nasa1515
 tags: DATA

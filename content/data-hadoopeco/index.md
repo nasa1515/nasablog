@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title:  Hadoop EcoSystem Sub Project [DATA]
+title:  "[DATA] - Hadoop EcoSystem Sub Project"
 date: "2021-08-13 00:41:25"
 author: nasa1515
 tags: DATA

@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: Azure VM에 Apache Spark v3.0 Standalone 설치 With Zeppelin [DATA]
+title: "[DATA] - Azure VM에 Apache Spark v3.0 Standalone 설치 With Zeppelin"
 date: "2021-08-14 00:39:25"
 author: nasa1515
 tags: DATA

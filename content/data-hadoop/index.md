@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title:  Apache Hadoop, HDFS, MapReduce [DATA]
+title:  "[DATA] - Apache Hadoop, HDFS, MapReduce"
 date: "2021-08-13 00:40:25"
 author: nasa1515
 tags: DATA

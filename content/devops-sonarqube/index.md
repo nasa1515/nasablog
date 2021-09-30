@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: SonarQube With Jenkins [DevOps]
+title: "[DEVOPS] - SonarQube With Jenkins"
 date: "2021-08-12 00:39:25"
 author: nasa1515
 tags: DevOps

@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 네트워크 기초 Part - 2 [Routing, Switching]
+title: "[Routing, Switching] 네트워크 기초 Part - 2"
 date: "2021-06-23 00:00:20"
 author: nasa1515
 tags: NETWORK

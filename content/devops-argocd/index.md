@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: Argo-CD를 이용한 배포 자동화 [DevOps]
+title: "[DEVOPS] - Argo-CD를 이용한 배포 자동화"
 date: "2021-08-07 00:04:25"
 author: nasa1515
 tags: DevOps

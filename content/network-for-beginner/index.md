@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 네트워크 기초 Part - 1 [OSI 7-layer, TCP/IP]
+title: "[OSI 7-layer, TCP/IP] - 네트워크 기초 Part - 1"
 date: "2021-06-23 00:00:10"
 author: nasa1515
 tags: NETWORK

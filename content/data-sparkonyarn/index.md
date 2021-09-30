@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title:  Apache Spark v3.0 on yarn 설치 With Zeppelin [DATA]
+title:  "[DATA] - Apache Spark v3.0 on yarn 설치 With Zeppelin"
 date: "2021-08-16 00:39:25"
 author: nasa1515
 tags: DATA

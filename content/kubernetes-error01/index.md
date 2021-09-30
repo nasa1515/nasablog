@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 1.17버전 이상 헬스 체크 에러 리포트 [Kubernetes]
+title: "[Kubernetes] - 1.17버전 이상 헬스 체크 에러 리포트"
 date: "2021-06-29 00:07:25"
 author: nasa1515
 tags: Kubernetes Error-Report

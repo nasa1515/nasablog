@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 쿠버네티스의 POD? [Kubernetes]
+title: "[Kubernetes] - 쿠버네티스의 POD?"
 date: "2021-06-29 00:07:16"
 author: nasa1515
 tags: Kubernetes

@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: Network [DOCKER]
+title: "[DOCKER] - Network"
 date: "2021-06-26 00:10:25"
 author: nasa1515
 tags: DOCKER

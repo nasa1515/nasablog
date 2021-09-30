@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 쿠버네티스의 레이블 및 셀렉터 [Kubernetes]
+title: "[Kubernetes] - 쿠버네티스의 레이블 및 셀렉터
 date: "2021-06-29 00:07:17"
 author: nasa1515
 tags: Kubernetes

@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: GKE Cluster를 Rancher에 연동하기 [DevOps] [GCP]
+title: "[DEVOPS] - GKE Cluster를 Rancher에 연동하기"
 date: "2021-08-06 00:04:25"
 author: nasa1515
 tags: DevOps GCP

@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: length is not divisibleby 2 [Error Report] [Kubernetes]
+title: "[Error Report] - length is not divisibleby 2"
 date: "2021-06-29 00:07:12"
 author: nasa1515
 tags: Kubernetes Error-Report

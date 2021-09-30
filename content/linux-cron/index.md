@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: CRONTAB, CRON [LINUX]
+title: "[LINUX] - CRONTAB, CRON"
 date: "2021-06-23 00:00:50"
 author: nasa1515
 tags: LINUX

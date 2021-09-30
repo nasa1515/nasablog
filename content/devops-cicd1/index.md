@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: Jenkins를 이용한 CI 자동화 구축 [DevOps]
+title: "[DEVOPS] - Jenkins를 이용한 CI 자동화 구축"
 date: "2021-08-04 00:41:25"
 author: nasa1515
 tags: DevOps

@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: Kubernetes 환경구성 on GCP Using KubeSpary [Kubernetes] [GCP]
+title: "[Kubernetes] - Kubernetes 환경구성 on GCP Using KubeSpary"
 date: "2021-06-29 00:07:10"
 author: nasa1515
 tags: Kubernetes GCP

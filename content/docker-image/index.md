@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: IMAGE [DOCKER]
+title: "[DOCKER] - IMAGE"
 date: "2021-06-26 00:09:25"
 author: nasa1515
 tags: DOCKER

@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: Shell Script - awk [LINUX]
+title: "[LINUX] - Shell Script - awk"
 date: "2021-06-28 00:13:25"
 author: nasa1515
 tags: LINUX

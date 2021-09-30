@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 작성 중... [Kubernetes]
+title: "[Kubernetes] - 작성 중..."
 date: "2021-08-16 00:50:25"
 author: nasa1515
 tags: Kubernetes

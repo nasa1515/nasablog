@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: Apache Spark에 대해서 [DATA]
+title: "[DATA] - Apache Spark란??"
 date: "2021-08-13 00:39:25"
 author: nasa1515
 tags: DATA

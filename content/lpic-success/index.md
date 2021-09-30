@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: LPIC-1 (101,102) 합격 후기 [LPIC]
+title: "[LINUX] - LPIC-1 (101,102) 합격 후기"
 date: "2021-07-27 00:06:25"
 author: nasa1515
 tags: LINUX

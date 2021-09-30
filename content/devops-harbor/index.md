@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: Private 이미지 저장소 Harbor 도입 [DevOps]
+title: "[DEVOPS] - Private 이미지 저장소 Harbor 도입"
 date: "2021-08-10 00:39:25"
 author: nasa1515
 tags: DevOps

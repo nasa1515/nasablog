@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 쿠버네티스의 Volume [Kubernetes]
+title: "[Kubernetes] - 쿠버네티스의 Volume"
 date: "2021-06-29 00:07:20"
 author: nasa1515
 tags: Kubernetes

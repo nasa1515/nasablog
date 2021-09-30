@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: 이미지 분석 툴 Anchore With Jenkins [DevOps]
+title: "[DEVOPS] - 이미지 분석 툴 Anchore With Jenkins"
 date: "2021-08-11 00:39:25"
 author: nasa1515
 tags: DevOps

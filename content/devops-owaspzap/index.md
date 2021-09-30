@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: Jenkins Pipeline에 OWASP ZAP 도입기 [DevOps]
+title: "[DEVOPS] - Jenkins Pipeline에 OWASP ZAP 도입기"
 date: "2021-08-09 00:39:25"
 author: nasa1515
 tags: DevOps

@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: GCP의 FileStore (NFS) 를 PV로 사용해보자 [DevOps]
+title: "[DEVOPS] - GCP의 FileStore (NFS) 를 PV로 사용해보자"
 date: "2021-08-07 00:39:25"
 author: nasa1515
 tags: DevOps GCP

@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: Shell Script - 특수,위치,아규먼트 매개 변수 [LINUX]
+title: "[LINUX] - Shell Script - 특수,위치,아규먼트 매개 변수"
 date: "2021-06-28 00:16:25"
 author: nasa1515
 tags: LINUX

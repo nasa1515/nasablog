@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: "[Kubernetes] 쿠버네티스의 명령어 정리"
+title: "[Kubernetes] - 쿠버네티스의 명령어 정리"
 date: "2021-06-29 00:07:15"
 author: nasa1515
 tags: Kubernetes

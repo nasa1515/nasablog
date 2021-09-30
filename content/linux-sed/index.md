@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: Shell Script - sed [LINUX]
+title: "[LINUX] - Shell Script - sed"
 date: "2021-06-28 00:12:25"
 author: nasa1515
 tags: LINUX

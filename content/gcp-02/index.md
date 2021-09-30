@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: SQL/BUCKET 생성 [GCP]
+title: "[GCP] - SQL/BUCKET 생성"
 date: "2021-06-25 00:04:25"
 author: nasa1515
 tags: GCP
