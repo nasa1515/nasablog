@@ -1,6 +1,6 @@
 module.exports = {
-  title: `NASA1515 이원석 블로그`,
-  description: `NASA1515 이원석 블로그`,
+  title: `NASA1515 BLOG`,
+  description: `NASA1515 BLOG`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
   siteUrl: `https://nasa1515.tech`,
   ogImage: `/topicon.jpg`, // Path to your image you placed in the 'static' folder
