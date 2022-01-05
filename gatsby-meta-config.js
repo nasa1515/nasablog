@@ -9,7 +9,7 @@ module.exports = {
       repo: `nasa1515/nasablog`,
     },
   },
-  ga: 'UA-192755809-1', // Google Analytics Tracking ID
+  ga: 'G-JW5RRD5C13', // Google Analytics Tracking ID
   author: {
     name: `이원석`,
     bio: {
