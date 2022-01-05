@@ -7,6 +7,21 @@ module.exports = {
 
   plugins: [
     `gatsby-plugin-react-helmet`,
+
+    {
+      resolve: `gatsby-plugin-google-tagmanager`,
+      options: {
+        id: "6005647020",
+  
+        // Include GTM in development.
+        // Defaults to false meaning GTM will only be loaded in production.
+        includeInDevelopment: false,
+  
+        // Specify optional GTM environment details.
+        gtmAuth: "GTM-5S79ZKZ",
+        gtmPreview: "nasa1515.tech",
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
