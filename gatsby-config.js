@@ -8,7 +8,22 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
 
-   
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-5S79ZKZ",
+        includeInDevelopment: false,
+        defaultDataLayer: { platform: "gatsby" },
+  
+        // Specify optional GTM environment details.
+        gtmAuth: "f5v-1P2mrjP077WekXWXlQ",
+        gtmPreview: "env-1",  
+        routeChangeEventName: "gatsby-route-change",
+        enableWebVitalsTracking: true,
+      },
+    },
+
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
