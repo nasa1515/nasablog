@@ -40,7 +40,9 @@ export default ({ data }) => {
         <Layout>
           <SEO title={curPost?.title} description={curPost?.excerpt} />
           <PostHeader post={curPost} viewCount={viewCount} />
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1125098373921970" crossorigin="anonymous"></script>
           <PostContent html={curPost.html} />
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1125098373921970" crossorigin="anonymous"></script>
           <PostCardsAdjacent prevPost={prevPost} nextPost={nextPost} />
           {utterancesRepo && <Utterances repo={utterancesRepo} theme={theme} />}
         </Layout>
