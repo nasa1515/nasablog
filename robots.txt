@@ -1,0 +1,3 @@
+User-agent: *
+Sitemap: https://nasa1515.com/sitemap/sitemap-index.xml
+Host: https://nasa1515.com
