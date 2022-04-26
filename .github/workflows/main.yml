@@ -3,7 +3,7 @@ name: gatsby deploy
 
 on:
   push:
-    branches: [master]
+    branches: [main]
 
 jobs:
   deploy:
@@ -25,7 +25,7 @@ jobs:
       - name: CNAME copy
         run: cp CNAME public/
 
-      - name: deploy2
+      - name: deploy
         uses: maxheld83/ghpages@v0.2.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
