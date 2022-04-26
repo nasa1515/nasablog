@@ -1,5 +1,5 @@
 module.exports = {
-  title: `NASA1515 BLOG`,
+  title: `DE NASA1515 BLOG`,
   description: `NASA1515 BLOG`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
   siteUrl: `https://nasa1515.com`,
