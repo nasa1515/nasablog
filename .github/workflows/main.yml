@@ -25,7 +25,7 @@ jobs:
       - name: CNAME copy
         run: cp CNAME public/
 
-      - name: deploy
+      - name: deploy2
         uses: maxheld83/ghpages@v0.2.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
