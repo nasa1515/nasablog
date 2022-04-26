@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v2
-
+        
       - name: packages install
         run: npm install
 
@@ -21,6 +21,9 @@ jobs:
         env:
           GH_API_KEY: ${{ secrets.API_KEY }}
 
+      - name: init git
+        run: git init
+        
       - name: CNAME copy
         run: cp CNAME public/
 
