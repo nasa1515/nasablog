@@ -1,8 +1,9 @@
+
 name: gatsby deploy
 
 on:
   push:
-    branches: [main]
+    branches: [master]
 
 jobs:
   deploy:
@@ -12,7 +13,7 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v2
-        
+
       - name: packages install
         run: npm install
 
@@ -25,9 +26,8 @@ jobs:
         run: cp CNAME public/
 
       - name: deploy
-        uses: ad-m/github-push-action@v0.5.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
-          force: true
-          directory: 'public'
+        uses: maxheld83/ghpages@v0.2.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_PAT: ${{ secrets.API_KEY }}
+          BUILD_DIR: 'public/'
