@@ -21,14 +21,12 @@ jobs:
         env:
           GH_API_KEY: ${{ secrets.API_KEY }}
 
-      - name: init git
-        run: git init
-        
       - name: CNAME copy
         run: cp CNAME public/
 
       - name: deploy
         uses: maxheld83/ghpages@v0.2.1
+        run: git init
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_PAT: ${{ secrets.API_KEY }}
