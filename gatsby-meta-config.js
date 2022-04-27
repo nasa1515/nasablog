@@ -15,7 +15,7 @@ module.exports = {
     bio: {
       role: `Data Engineer`,
       description: ['새로운 것을 좋아하는', '모든 걸 기록하는'],
-      thumbnail: 'author.gif',
+      thumbnail: 'wonseok.gif',
     },
     social: {
       github: `https://github.com/nasa1515`,
