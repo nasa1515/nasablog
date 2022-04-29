@@ -11,10 +11,10 @@ module.exports = {
   },
   ga: 'G-LR5TBZKGVN', // Google Analytics Tracking ID
   author: {
-    name: `이원석`,
+    name: `NASA1515`,
     bio: {
       role: `Data Engineer`,
-      description: ['새로운 것을 좋아하는', '모든 걸 기록하는'],
+      description: ['Trying New Things', 'It Records Everything'],
       thumbnail: 'wonseok.gif',
     },
     social: {
@@ -37,7 +37,7 @@ module.exports = {
       // =======================================================
       {
         date: '2020.12 ~ ',
-        activity: 'Cloocus Data Engineer 🚀',
+        activity: 'Cloud Data Engineer 🚀',
       },
     ],
 
@@ -55,7 +55,7 @@ module.exports = {
       {
         title: 'Cloocus',
         description:
-          '개인적으로 개발과 Kubernetes 환경에 대해서 공부만 하던 중 기회를 잡게 되어 Data Engineer 역할로 스타트업에 참여하게 되었습니다. ',
+          'I Work for a Startup as a data engineer in Korea',
         techStack: ['Data Engineer', 'Azure', 'GCP', 'AWS', 'Hadoop', 'Spark'],
         thumbnailUrl: 'cloocus.png',
       },
