@@ -14,7 +14,7 @@ module.exports = {
     name: `NASA1515`,
     bio: {
       role: `Data Engineer`,
-      description: ['Trying New Things', 'It Records Everything'],
+      description: ['Everything I study is documented.', 'Trying to be more creative.'],
       thumbnail: 'wonseok.gif',
     },
     social: {
