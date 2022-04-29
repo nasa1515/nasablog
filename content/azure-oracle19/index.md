@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[AZURE] Oracle 19c 설치, LogMiner, CDC 설정하기 From Azure VM"
 date: "2022-04-01 00:34:25"
 author: nasa1515
-tags: AZURE
-categories: AZURE
+tags: CLOUD
+categories: CLOUD
 ---
 
 

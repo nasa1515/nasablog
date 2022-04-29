@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[AZURE] Azure Cloud Shell From vscode"
 date: "2021-08-01 00:39:25"
 author: nasa1515
-tags: AZURE
-categories: AZURE
+tags: CLOUD
+categories: CLOUD
 ---
 
 

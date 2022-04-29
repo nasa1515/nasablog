@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[AZURE] Cloudshell error = Error creating Azure Storage Account - code : 409"
 date: "2021-08-20 00:39:25"
 author: nasa1515
-tags: AZURE Error-Report 
-categories: AZURE Error-Report
+tags: CLOUD Error-Report 
+categories: CLOUD Error-Report
 ---
 
 

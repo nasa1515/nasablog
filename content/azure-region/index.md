@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[AZURE] Region, availability zone"
 date: "2021-07-30 00:10:25"
 author: nasa1515
-tags: AZURE
-categories: AZURE
+tags: CLOUD
+categories: CLOUD
 ---
 
 

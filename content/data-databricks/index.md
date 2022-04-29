@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[DATA, GCP] - GCP DataBricks 사용기"
 date: "2021-09-12 00:34:25"
 author: nasa1515
-tags: GCP DATA
-categories: GCP DATA
+tags: CLOUD DATA
+categories: CLOUD DATA
 ---
 
   

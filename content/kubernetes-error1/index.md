@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[Error Report] - length is not divisibleby 2"
 date: "2021-06-29 00:07:12"
 author: nasa1515
-tags: Kubernetes Error-Report
-categories: Kubernetes Error-Report
+tags: DevOps Error-Report
+categories: DevOps Error-Report
 ---
 
 ## ✔ 발생 에러

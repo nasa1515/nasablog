@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[DATA, GCP] - GCP DataProc spark Cluster로 ETL 후 BigQuery에 적재"
 date: "2021-09-08 00:34:25"
 author: nasa1515
-tags: GCP DATA
-categories: GCP DATA
+tags: CLOUD DATA
+categories: CLOUD DATA
 ---
 
   

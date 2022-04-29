@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[GCP] - wordpress 생성해보기"
 date: "2021-06-25 00:06:25"
 author: nasa1515
-tags: GCP
-categories: GCP
+tags: CLOUD
+categories: CLOUD
 ---
 
 

@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[AZURE] SERVICE, COMPUTING, NETWORK"
 date: "2021-07-27 00:06:25"
 author: nasa1515
-tags: AZURE
-categories: AZURE
+tags: CLOUD
+categories: CLOUD
 ---
 
 

@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[DOCKER] - VOLUMES"
 date: "2021-06-26 00:12:25"
 author: nasa1515
-tags: DOCKER
-categories: DOCKER
+tags: DevOps
+categories: DevOps
 ---
 
 

@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[Kubernetes] - 쿠버네티스의 POD?"
 date: "2021-06-29 00:07:16"
 author: nasa1515
-tags: Kubernetes
-categories: Kubernetes
+tags: DevOps
+categories: DevOps
 ---
 
 머리말  

@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[AZURE] Availability (가용성) VMSS, SCALE"
 date: "2021-08-01 00:36:25"
 author: nasa1515
-tags: AZURE
-categories: AZURE
+tags: CLOUD
+categories: CLOUD
 ---
 
 

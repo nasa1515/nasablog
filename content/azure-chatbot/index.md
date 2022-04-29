@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[DATA, AZURE] - MicroSoft BotFrameWork with Python to Azure"
 date: "2021-10-24 00:35:25"
 author: nasa1515
-tags: AZURE DATA
-categories: AZURE DATA
+tags: CLOUD DATA
+categories: CLOUD DATA
 ---
 
   

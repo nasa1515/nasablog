@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[GCP] - GCP Cloud shell 원격 접속 하기"
 date: "2021-08-07 00:30:25"
 author: nasa1515
-tags: GCP
-categories: GCP
+tags: CLOUD
+categories: CLOUD
 ---
 
 

@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[DOCKER] - CONTAINER"
 date: "2021-06-26 00:07:25"
 author: nasa1515
-tags: DOCKER
-categories: DOCKER
+tags: DevOps
+categories: DevOps
 ---
 
 머리말  

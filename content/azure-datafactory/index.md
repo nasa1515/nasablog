@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[DATA, AZURE] Azure DataFactory로 Oracle Data 수집하기"
 date: "2021-09-05 00:34:25"
 author: nasa1515
-tags: AZURE DATA
-categories: AZURE DATA
+tags: CLOUD DATA
+categories: CLOUD DATA
 ---
 
   

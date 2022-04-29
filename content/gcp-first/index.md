@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[GCP] - 인스턴스 생성"
 date: "2021-06-23 00:03:25"
 author: nasa1515
-tags: GCP
-categories: GCP
+tags: CLOUD
+categories: CLOUD
 ---
 
 머리말  

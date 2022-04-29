@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[Kubernetes] - Kubernetes 환경구성 on GCP Using kubeadm"
 date: "2021-06-29 00:07:11"
 author: nasa1515
-tags: Kubernetes GCP
-categories: Kubernetes GCP
+tags: DevOps CLOUD
+categories: DevOps CLOUD
 ---
 
 머리말  

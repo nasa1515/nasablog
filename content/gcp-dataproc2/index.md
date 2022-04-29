@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[DATA, GCP] - GCP DataProc 2탄 Pyspark JOB Access"
 date: "2021-09-10 00:34:25"
 author: nasa1515
-tags: GCP DATA
-categories: GCP DATA
+tags: CLOUD DATA
+categories: CLOUD DATA
 ---
 
   

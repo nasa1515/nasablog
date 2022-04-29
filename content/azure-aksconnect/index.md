@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[AZURE] VSCODE로 Cloud PaaS k8s (AKS) 관리하기"
 date: "2021-08-19 00:39:25"
 author: nasa1515
-tags: AZURE
-categories: AZURE
+tags: CLOUD
+categories: CLOUD
 ---
 
 

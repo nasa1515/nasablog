@@ -3,8 +3,8 @@ emoji: 🤦‍♂️
 title: "[AZURE] AZ-400 [DevOps Engineer Expert] 자격증 합격 후기"
 date: "2021-07-28 00:06:25"
 author: nasa1515
-tags: AZURE
-categories: AZURE
+tags: CLOUD
+categories: CLOUD
 ---
 
 
