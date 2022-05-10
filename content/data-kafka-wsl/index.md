@@ -1,6 +1,6 @@
 ---
 emoji: 🤦‍♂️
-title: "[DATA] - WSL2 Ubuntu에 Kafka Broker 구성하기"
+title: "[DATA] - Zookeeper & Kafka 구성 with WSL2, Docker"
 date: "2022-05-09 00:39:25"
 author: nasa1515
 tags: DATA CLOUD
@@ -162,7 +162,7 @@ Docker와 Docker-compose의 경우 아래의 공식문서를 확인하시면 자
 
 ---
 
-## 👍 Kafka 설치
+## 👍 Zookeeper 설치
 
 ### PS
 
@@ -419,9 +419,13 @@ Kafka는 Broker에서 Topic의 Metadata를 저장하기 위해 Zookeeper를 사�
     $ docker exec nasa1515-zookeeper-1 /usr/local/zookeeper/bin/zkServer.sh status
     $ docker exec nasa1515-zookeeper-2 /usr/local/zookeeper/bin/zkServer.sh status
     $ docker exec nasa1515-zookeeper-3 /usr/local/zookeeper/bin/zkServer.sh status
+    ```
 
-    # 확인해보면 한개의 Zookeeper는 Leader로 선출되었고, 나머지 2개는 follwer로 설정되어있는 것을 확인 할 수 있다.
+<br/>
 
+* 결과를 확인하면, 한개의 Zookeeper는 Leader로 선출되었고, 나머지 2개는 follwer로 설정되어있는 것을 확인 할 수 있다.
+
+    ```js
     root@L-wslee:/home/nasa1515/docker# docker exec nasa1515-zookeeper-1 /usr/local/zookeeper/bin/zkServer.sh status
     ZooKeeper JMX enabled by default
     Using config: /usr/local/zookeeper/bin/../conf/zoo.cfg
@@ -439,16 +443,562 @@ Kafka는 Broker에서 Topic의 Metadata를 저장하기 위해 Zookeeper를 사�
     Mode: leader
     ```
 
-## 1일차 끝
+<br/>
+
+---
+
+## 🐱‍🏍 Kafka Configuration
+
+### PS
+
+Zookeeper Cluster의 구성을 완료했다면,  
+이번에는 Kafka를 Docker로 구성한 뒤 Zookeeper Cluster와 연동하는 작업을 진행합니다.  
+간단하게 Kafka Broker는 Zookeeper와 동일하게 3개로 구성하고 크기를 자유롭게 변경 가능하도록 하려고 합니다.
 
 
 <br/>
 
 
-## 마치며…  
 
-  
-이번 포스트는 그나마 수월하게 성공했습니다.  .  
+* 위에서 Zookeeper를 다룰 때 DockerFile을 다뤘으니, 이번에도 바로 DockerFile을 구성하겠습니다.
+
+    [1] 우선 작업할 폴더를 생성합니다
+
+    ```js
+    $ mkdir kafka-broker
+    ```
+
+    <br/>
+
+    [2] 아래와 같은 내용이 담긴 Dockerfile을 생성합니다.
+    
+    ```js
+    FROM ubuntu:20.04
+    RUN mkdir -p /root/install
+    RUN apt-get update
+
+    WORKDIR /root/install
+    ENV DEBIAN_FRONTEND noninteractive
+    ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+    RUN apt-get install openjdk-8-jdk -y
+    RUN apt-get install wget -y
+    RUN apt-get install vim -y
+
+    RUN wget https://downloads.apache.org/kafka/3.1.0/kafka_2.12-3.1.0.tgz
+    RUN tar -zxvf kafka_2.12-3.1.0.tgz
+    RUN mv kafka_2.12-3.1.0 /usr/local/kafka
+    RUN mkdir /data 
+
+    COPY config/init.sh init.sh
+    RUN sed -i 's/\r//g' init.sh
+
+    COPY config/server.properties /usr/local/kafka/config/server.properties
+    RUN sed -i 's/\r//g' /usr/local/kafka/config/server.properties
+
+    CMD bash init.sh
+    ```
+
+    <br/>
+
+    [3] 마찬가지로 config 폴더를 생성합니다.
+
+    ```js
+    $ mkdir config
+    ```
+
+    <br/>
+
+    [4] config Folder 안에 init.sh 파일을 생성하고 아래와 같이 내용을 추가합니다.
+    
+    ```js
+    #!/bin/bash
+
+    $ sed -i "s/{{broker_id}}/$BROKER_ID/" /usr/local/kafka/config/server.properties
+
+    /usr/local/kafka/bin/kafka-server-start.sh /usr/local/kafka/config/server.properties
+    ```
+
+    <br/>
+
+    [5] config Folder 안에 server.properties 파일을 생성하고 아래와 같이 내용을 추가합니다.  
+    원래라면 broker_id에 값을 추가해야하지만, 위의 init.sh에서 넣어주기 때문에 괜찮습니다.
+
+    ```js
+    num.network.threads=3
+    num.io.threads=8
+    socket.send.buffer.bytes=102400
+    socket.receive.buffer.bytes=102400
+    socket.request.max.bytes=104857600
+    log.dirs=/data
+    num.partitions=1
+    num.recovery.threads.per.data.dir=1
+    offsets.topic.replication.factor=1
+    transaction.state.log.replication.factor=1
+    transaction.state.log.min.isr=1
+    log.retention.hours=168
+    log.segment.bytes=1073741824
+    log.retention.bytes=5368709120
+    log.retention.check.interval.ms=300000
+    zookeeper.connect=nasa1515-zookeeper-1:2181,nasa1515-zookeeper-2:2181,nasa1515-zookeeper-3:2181/default-kafka
+    zookeeper.connection.timeout.ms=18000
+    group.initial.rebalance.delay.ms=0
+    auto.create.topics.enable=true
+    broker.id={{broker_id}}
+    ```
+
+    <br/>
+
+    [6] docker-compose.yml을 아래와 같은 내용으로 작성합니다.
+
+    ```js
+    version: '3.8'
+    volumes:
+      nasa1515-kafka-1-volume:
+        name: nasa1515-kafka-1-volume 
+      nasa1515-kafka-2-volume:
+        name: nasa1515-kafka-2-volume
+      nasa1515-kafka-3-volume:
+        name: nasa1515-kafka-3-volume
+    networks:
+     default:
+         name: zoo
+    
+    services:
+      nasa1515-kafka-1:
+        container_name: nasa1515-kafka-1
+        environment:
+          BROKER_ID: 1
+        hostname: nasa1515-kafka-1
+        image: nasa1515-kafka
+        restart: always
+        volumes:
+          - nasa1515-kafka-1-volume:/data
+
+      nasa1515-kafka-2:
+        container_name: nasa1515-kafka-2
+        environment:
+          BROKER_ID: 2
+        hostname: nasa1515-kafka-2
+        image: nasa1515-kafka
+        restart: always
+        volumes:
+          - nasa1515-kafka-2-volume:/data
+
+      nasa1515-kafka-3:
+        container_name: nasa1515-kafka-3
+        environment:
+          BROKER_ID: 3
+        hostname: nasa1515-kafka-3
+        image: nasa1515-kafka
+        restart: always
+        volumes:
+          - nasa1515-kafka-3-volume:/data
+    ```
+
+    <br/>
+
+    [7] 여기까지 완료했다면 아래와 같은 형태로 구성이 되어야 합니다.
+
+    ```js
+    root@L-wslee:/home/nasa1515/docker/kafka-broker# ls -alrt *
+    -rwxrwxrwx 1 root root  639 May 10 11:11 Dockerfile
+    -rwxrwxrwx 1 root root  919 May 10 11:14 docker-compose.yml
+
+    config:
+    total 16
+    -rw-r--r-- 1 root root  178 May 10 11:12 init.sh
+    -rw-r--r-- 1 root root  681 May 10 11:13 server.properties
+    drwxrwxrwx 2 root root 4096 May 10 11:13 .
+    drwxr-xr-x 3 root root 4096 May 10 11:14 ..
+    ```
+
+    <br/>
+
+    [8] 자 이제 Dockerfile을 Build 합니다.
+
+    ```js
+    $ docker build --tag nasa1515-kafka .
+    ...
+    ...
+    ...
+    Step 17/18 : RUN sed -i 's/\r//g' /usr/local/kafka/config/server.properties
+     ---> Running in c653a7573fc3
+    Removing intermediate container c653a7573fc3
+     ---> 598ea0a00be3
+    Step 18/18 : CMD bash init.sh
+     ---> Running in f8a3710be663
+    Removing intermediate container f8a3710be663
+     ---> 5581d8201d8b
+    Successfully built 5581d8201d8b
+    Successfully tagged nasa1515-kafka:latest
+    ```
+    
+    <br/>
+
+    [9] Image가 정상적으로 Build 된 것을 확인합니다.
+
+    ```js
+    root@L-wslee:/home/nasa1515/docker/kafka-broker# docker image ls
+    REPOSITORY           TAG       IMAGE ID       CREATED              SIZE
+    nasa1515-kafka       latest    5581d8201d8b   About a minute ago   920MB
+    nasa1515-zookeeper   latest    e71e36444916   19 hours ago         737MB
+    ubuntu               20.04     53df61775e88   10 days ago          72.8MB
+    hello-world          latest    feb5d9fea6a5   7 months ago         13.3kB
+    ```
+
+    <br/>
+
+    [10] Compose.yml 파일로 Container를 동작시킵니다.
+
+    ```js
+    $ docker-compose up -d;
+    ...
+    ...
+    root@L-wslee:/home/nasa1515/docker/kafka-broker# docker-compose up -d;
+    [+] Running 7/7
+     ⠿ Network zoo                       Created                                                                                                                                               0.0s
+     ⠿ Volume "nasa1515-kafka-1-volume"  Created                                                                                                                                               0.0s
+     ⠿ Volume "nasa1515-kafka-2-volume"  Created                                                                                                                                               0.0s
+     ⠿ Volume "nasa1515-kafka-3-volume"  Created                                                                                                                                               0.0s
+     ⠿ Container nasa1515-kafka-1        Started                                                                                                                                               1.1s
+     ⠿ Container nasa1515-kafka-3        Started                                                                                                                                               1.1s
+     ⠿ Container nasa1515-kafka-2        Started                                                                                                                                               1.2s
+    ```
+
+    <br/>
+
+    [11] Kafka Container가 잘 실행되었는지 확인합니다.
+
+    ```js
+    $ docker ps
+    ...
+    ...
+    root@L-wslee:/home/nasa1515/docker/kafka-broker#  docker ps
+    CONTAINER ID   IMAGE            COMMAND                  CREATED              STATUS          PORTS     NAMES
+    5aed89a22bec   nasa1515-kafka   "/bin/sh -c 'bash in…"   About a minute ago   Up 19 seconds             nasa1515-kafka-1
+    2bea2dcd9062   nasa1515-kafka   "/bin/sh -c 'bash in…"   About a minute ago   Up 18 seconds             nasa1515-kafka-3
+    8ff56e284749   nasa1515-kafka   "/bin/sh -c 'bash in…"   About a minute ago   Up 18 seconds             nasa1515-kafka-2
+    ```
+
+    <br/>
+
+    [12] 실제 Container의 Kafka도 정상적으로 동작하는지 로그를 확인해봅시다.
+
+    ```js
+    $ docker logs nasa1515-kafka-1
+    ...
+    ...
+    ...
+    # BrokerToControllerChannelManager broker=3 브로커 3개가 정상적으로 연결되었습니다!
+
+    [2022-05-10 02:26:33,654] INFO [KafkaServer id=3] started (kafka.server.KafkaServer)
+    [2022-05-10 02:26:33,928] INFO [BrokerToControllerChannelManager broker=3 name=alterIsr]: Recorded new controller, from now on will use broker nasa1515-kafka-3:9092 (id: 3 rack: null) (kafka.server.BrokerToControllerRequestThread)
+    [2022-05-10 02:26:33,930] INFO [BrokerToControllerChannelManager broker=3 name=forwarding]: Recorded new controller, from now on will use broker nasa1515-kafka-3:9092 (id: 3 rack: null) (kafka.server.BrokerToControllerRequestThread)
+    ```
+
+
+
+<br/>
+
+---
+
+## 🎉 Kafka Client 설정 With Confluent
+
+위에 내용에서 구축했던 Kafka Cluster는 Docker Container에서 각자 다른 host를 가지고 있습니다.  
+때문에 Producer가 Kafka Broker 쪽으로 요청을 보낼 때 구성한 3개의 Host 중 어느 Host로 보내야 할 지 모르게 됩니다.  
+또한 운영적으로 보았을 때, Producer에서 하나의 Broker로 메세지를 보낸다면, 해당 Broker가 알 수 없는 문제로 종료되게 된다면, 이슈가 발생한다.  
+그래서 일반적인 WEB/WAS의 LoadBalancer 역할을 하는 하나의 End-Point 가 필요합니다.  
+지금부터 진행 할 내용은, End-Point에 요청을 보내, 여러 대의 Broker로 구성된 Cluster에서 고가용성을 확보하는 방법입니다.  
+
+
+<br/>
+
+Confluent Kafka REST 설치  
+
+* 동일하게 Docker로 진행합니다.  
+
+
+
+    [1] 작업 할 폴더를 동일하게 생성합니다.
+
+    ```js
+    $ mkdir confluent
+    ```
+
+    <br/>
+
+    [2] 아래 내용을 담은 Dockerfile을 생성합니다.
+
+    ```js
+    FROM ubuntu:20.04
+    RUN mkdir -p /root/install
+    RUN apt-get update
+    
+    WORKDIR /root/install
+
+    ENV DEBIAN_FRONTEND noninteractive
+    ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+    RUN apt-get install openjdk-8-jdk -y
+    RUN apt-get install wget -y
+    RUN apt-get install vim -y
+
+    # confluent-community 설치
+    RUN wget http://packages.confluent.io/archive/7.1/confluent-community-7.1.1.tar.gz
+    RUN tar -zxvf confluent-community-7.1.1.tar.gz
+    RUN mv confluent-7.1.1 /usr/local/confluent
+
+    # kafka-rest 설정파일 복사
+    COPY config/kafka-rest.properties /usr/local/confluent/etc/kafka-rest/kafka-rest.properties
+    RUN sed -i 's/\r//g' /usr/local/confluent/etc/kafka-rest/kafka-rest.properties
+    
+    # kakfa-rest 실행
+    CMD /usr/local/confluent/bin/kafka-rest-start /usr/local/confluent/etc/kafka-rest/kafka-rest.properties
+    ```
+
+    <br/>
+
+    [3] config 폴더를 생성합니다.
+
+    ```js
+    $ mkdir config
+    ```
+
+    <br/>
+
+    [4] config 폴더에 아래 내용을 넣은 kafka-rest.properties 생성합니다. 
+
+    ```js
+    # kakfa ID
+    id=default
+
+    # schema.registry.url=http://localhost:8081 
+    zookeeper.connect=nasa1515-zookeeper-1:2181,nasa1515-zookeeper-2:2181,nasa1515-zookeeper-3:2181 
+    bootstrap.servers=PLAINTEXT://nasa1515-kafka-1:9092,PLAINTEXT://nasa1515-kafka-2:9092,PLAINTEXT://nasa1515-kafka-3:9092
+    ```
+
+    <br/>
+
+    [5] 이제 아래 내용을 담은 docker-compose.yml 파일을 생성합니다.
+
+    ```js
+    version: '3.8'
+    networks:
+      default:
+        name: zoo
+    
+    services:
+      pipeline-confluent-kafka-rest:
+        container_name: pipeline-confluent-kafka-rest
+        hostname: pipeline-confluent-kafka-rest
+        image: pipeline-confluent-kafka-rest
+        restart: always
+        ports:
+          - 8082:8082
+    ```
+
+    <br/>
+
+    [6] 여기까지 완료되었으면 아래와 같은 형식의 파일이 존재해야 합니다.
+
+    ```js
+    root@L-wslee:/home/nasa1515/docker/Confluent# ls -alrt *
+    -rwxrwxrwx 1 root root  798 May 10 13:44 Dockerfile
+    -rwxrwxrwx 1 root root  258 May 10 13:45 docker-compose.yml
+
+    config:
+    total 12
+    -rw-r--r-- 1 root root  285 May 10 13:44 kafka-rest.properties
+    drwxrwxrwx 2 root root 4096 May 10 13:44 .
+    drwxr-xr-x 3 root root 4096 May 10 13:44 ..
+    ```
+    
+    <br/>
+
+    [7] Docker Image를 Build 합니다.
+
+    ```js
+    $ docker build --tag nasa1515-confluent-kafka .
+    ...
+    ...
+    Step 15/15 : CMD /usr/local/confluent/bin/kafka-rest-start /usr/local/confluent/etc/kafka-rest/kafka-rest.properties
+     ---> Running in 65ca3e623728
+    Removing intermediate container 65ca3e623728
+     ---> 661f80b47926
+    Successfully built 661f80b47926
+    Successfully tagged nasa1515-confluent-kafka:latest
+    ```
+
+    <br/>
+
+    [8] 이미지를 확인해봅시다.
+
+    ```js
+    root@L-wslee:/home/nasa1515/docker/Confluent# docker image ls
+    REPOSITORY                 TAG       IMAGE ID       CREATED          SIZE
+    nasa1515-confluent-kafka   latest    661f80b47926   22 seconds ago   1.99GB
+    nasa1515-zookeeper         latest    b2b8ec726801   2 hours ago      737MB
+    nasa1515-kafka             latest    5581d8201d8b   3 hours ago      920MBz
+    ubuntu                     20.04     53df61775e88   10 days ago      72.8MB
+    hello-world                latest    feb5d9fea6a5   7 months ago     13.3kB
+    ```
+
+    <br/>
+
+    [9] Docker-compose로 Container를 동작합니다.
+
+    ```js
+    $ docker-compose up -d
+    ...
+    ...
+    [+] Running 1/1
+    ⠿ Container nasa1515-confluent-kafka  Started                                                                                                                                             0.6s
+    ```
+
+    <br/>
+
+    [10] 정상적으로 실행되고 있는지 확인합니다.
+
+    ```js
+    $ docker ps
+    ...
+    ...
+    root@L-wslee:/home/nasa1515/docker/Confluent# docker ps
+    CONTAINER ID   IMAGE                      COMMAND                  CREATED          STATUS          PORTS                                       NAMES
+    d1f069f93aca   nasa1515-confluent-kafka   "/bin/sh -c '/usr/lo…"   34 seconds ago   Up 33 seconds   0.0.0.0:8082->8082/tcp, :::8082->8082/tcp   nasa1515-confluent-kafka
+    685b2f6adc7f   nasa1515-kafka             "/bin/sh -c 'bash in…"   2 hours ago      Up 2 hours                                                  nasa1515-kafka-3
+    86ee421b76a8   nasa1515-kafka             "/bin/sh -c 'bash in…"   2 hours ago      Up 2 hours                                                  nasa1515-kafka-1
+    10c8c2384fed   nasa1515-kafka             "/bin/sh -c 'bash in…"   2 hours ago      Up 2 hours                                                  nasa1515-kafka-2
+    d3fe193618f7   nasa1515-zookeeper         "/bin/sh -c 'bash in…"   2 hours ago      Up 2 hours                                                  nasa1515-zookeeper-1
+    021037ca8443   nasa1515-zookeeper         "/bin/sh -c 'bash in…"   2 hours ago      Up 2 hours                                                  nasa1515-zookeeper-3
+    6f9cd8cdd917   nasa1515-zookeeper         "/bin/sh -c 'bash in…"   2 hours ago      Up 2 hours                                                  nasa1515-zookeeper-2
+    ```
+
+    <br/>
+
+    [11] 이제 Kafka Broker 쪽에 Topic을 생성하겠습니다.
+    저는 Python을 사용하서 요청을 보내겠습니다.  
+
+    ```js
+    import requests import json 
+    
+    headers = { 'Content-Type': 'application/vnd.kafka.json.v2+json', } 
+    
+    data = '{"records":[{"value":{"id":"probiotics"}}]}' 
+    response = requests.post('http://localhost:8082/topics/nasa1515', headers=headers, data=data) 
+    print(response)
+    print(json.dumps(response.json(), indent=4))
+    ```
+
+    <br/>
+
+    토픽 생성 결과
+
+    ```js
+    <Response [200]>
+    {
+        "offsets": [
+            {
+                "partition": 0,
+                "offset": 0,
+                "error_code": null,
+                "error": null
+            }
+        ],
+        "key_schema_id": null,
+        "value_schema_id": null
+    }
+    ```
+
+    <br/>
+
+    파이썬 get request로 Topic 정보 확인하기
+
+    ```js
+    import requests 
+    import json 
+
+    response = requests.get('http://localhost:8082/topics/nasa1515/   ') 
+
+    print(response) 
+    print(json.dumps(response.json(), indent=4))
+    ```
+
+    <br/>
+
+    결과
+
+    ```js
+    <Response [200]>
+    {
+        "name": "nasa1515",
+        "configs": {
+            "compression.type": "producer",
+            "leader.replication.throttled.replicas": "",
+            "message.downconversion.enable": "true",
+            "min.insync.replicas": "1",
+            "segment.jitter.ms": "0",
+            "cleanup.policy": "delete",
+            "flush.ms": "9223372036854775807",
+            "follower.replication.throttled.replicas": "",
+            "segment.bytes": "1073741824",
+            "retention.ms": "604800000",
+            "flush.messages": "9223372036854775807",
+            "message.format.version": "3.0-IV1",
+            "file.delete.delay.ms": "60000",
+            "max.compaction.lag.ms": "9223372036854775807",
+            "max.message.bytes": "1048588",
+            "min.compaction.lag.ms": "0",
+            "message.timestamp.type": "CreateTime",
+            "preallocate": "false",
+            "min.cleanable.dirty.ratio": "0.5",
+            "index.interval.bytes": "4096",
+            "unclean.leader.election.enable": "false",
+            "retention.bytes": "5368709120",
+            "delete.retention.ms": "86400000",
+            "segment.ms": "604800000",
+            "message.timestamp.difference.max.ms": "9223372036854775807",
+            "segment.index.bytes": "10485760"
+        },
+        "partitions": [
+            {
+                "partition": 0,
+                "leader": 3,
+                "replicas": [
+                    {
+                        "broker": 3,
+                        "leader": true,
+                        "in_sync": true
+                    }
+                ]
+            }
+        ]
+    }
+    ```
+
+
+    
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+
+
+## 마치며…  
 
 
 <br/>
