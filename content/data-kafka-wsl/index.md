@@ -976,8 +976,67 @@ Confluent Kafka REST 설치
     }
     ```
 
+<br/>
 
-    
+
+---
+
+## 🌹 Kafka Gui Tools - kafdrop
+
+### PS
+
+아무래도 모든 Cluster들을 Docker Container로 구동하다보니깐 뭔가 일일히 확인하기가 너무 힘들다.  
+그래서 구글링을 하다보니 통합 GUI를 지원해주는 툴을 발견했다. 물론 얘도 도커로 띄운다..  
+
+
+<br/>
+
+* 이 아이는 지원하는 Docker 이미지가 있습니다!!. 
+
+  [1] 작업 디렉토리 하나 생성합니다.  
+
+  ```js
+  $ mkdir kafdrop 
+  ```
+
+  <br/>
+
+  [2] docker-compose.yml 하나 간단하게 빨리 만들어줍시다.
+
+  ```js
+  version: "3.8"
+  services:
+    kafdrop:
+      image: obsidiandynamics/kafdrop
+      restart: "always"
+      ports:
+        - "9000:9000" 
+      environment:
+        KAFKA_BROKERCONNECT: "nasa1515-kafka-1:9092,nasa1515-kafka-2:9092,nasa1515-kafka-3:9092"
+        JVM_OPTS: "-Xms32M -Xmx64M" 
+
+  networks:
+    default:
+      name: zoo
+  ```
+
+  <br/>
+
+  [3] compose 실행해줍니다.
+
+  ```js
+  $ docker-compose up -d;
+  ```
+
+  <br/>
+
+  [4] 정상적으로 설치되었다면 Localhost:9000 web으로 아래와 같이 접속이 가능합니다.  
+  확인해보면 연결되어있는 Broker와 생성되어있는 Topic등을 확인이 가능합니다.
+
+  ![image](https://user-images.githubusercontent.com/69498804/167564283-6c6bccc9-fa6e-4f79-be20-2dc0488e4829.png)
+
+
+
 <br/>
 
 <br/>
