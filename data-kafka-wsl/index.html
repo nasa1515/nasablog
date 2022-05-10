@@ -882,6 +882,43 @@ response <span class="token operator">=</span> requests<span class="token punctu
 </li>
 </ul>
 <br/>
+<hr>
+<h2 id="-kafka-gui-tools---kafdrop" style="position:relative;"><a href="#-kafka-gui-tools---kafdrop" aria-label=" kafka gui tools   kafdrop permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>🌹 Kafka Gui Tools - kafdrop</h2>
+<h3 id="ps-2" style="position:relative;"><a href="#ps-2" aria-label="ps 2 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PS</h3>
+<p>아무래도 모든 Cluster들을 Docker Container로 구동하다보니깐 뭔가 일일히 확인하기가 너무 힘들다.<br>
+그래서 구글링을 하다보니 통합 GUI를 지원해주는 툴을 발견했다. 물론 얘도 도커로 띄운다..  </p>
+<br/>
+<ul>
+<li>
+<p>이 아이는 지원하는 Docker 이미지가 있습니다!!. </p>
+<p>[1] 작업 디렉토리 하나 생성합니다.  </p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">$ mkdir kafdrop </code></pre></div>
+<br/>
+<p>[2] docker-compose.yml 하나 간단하게 빨리 만들어줍시다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">version<span class="token operator">:</span> <span class="token string">"3.8"</span>
+services<span class="token operator">:</span>
+kafdrop<span class="token operator">:</span>
+  image<span class="token operator">:</span> obsidiandynamics<span class="token operator">/</span>kafdrop
+  restart<span class="token operator">:</span> <span class="token string">"always"</span>
+  ports<span class="token operator">:</span>
+    <span class="token operator">-</span> <span class="token string">"9000:9000"</span> 
+  environment<span class="token operator">:</span>
+    <span class="token constant">KAFKA_BROKERCONNECT</span><span class="token operator">:</span> <span class="token string">"nasa1515-kafka-1:9092,nasa1515-kafka-2:9092,nasa1515-kafka-3:9092"</span>
+    <span class="token constant">JVM_OPTS</span><span class="token operator">:</span> <span class="token string">"-Xms32M -Xmx64M"</span> 
+
+networks<span class="token operator">:</span>
+<span class="token keyword">default</span><span class="token operator">:</span>
+  name<span class="token operator">:</span> zoo</code></pre></div>
+<br/>
+<p>[3] compose 실행해줍니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">$ docker<span class="token operator">-</span>compose up <span class="token operator">-</span>d<span class="token punctuation">;</span></code></pre></div>
+<br/>
+<p>[4] 정상적으로 설치되었다면 Localhost:9000 web으로 아래와 같이 접속이 가능합니다.<br>
+확인해보면 연결되어있는 Broker와 생성되어있는 Topic등을 확인이 가능합니다.</p>
+<p><img src="https://user-images.githubusercontent.com/69498804/167564283-6c6bccc9-fa6e-4f79-be20-2dc0488e4829.png" alt="image"></p>
+</li>
+</ul>
+<br/>
 <br/>
 <br/>
 <br/>
@@ -909,6 +946,12 @@ response <span class="token operator">=</span> requests<span class="token punctu
 </ul>
 </li>
 <li><a href="#-kafka-client-%EC%84%A4%EC%A0%95-with-confluent">🎉 Kafka Client 설정 With Confluent</a></li>
+<li>
+<p><a href="#-kafka-gui-tools---kafdrop">🌹 Kafka Gui Tools - kafdrop</a></p>
+<ul>
+<li><a href="#ps-2">PS</a></li>
+</ul>
+</li>
 <li><a href="#%EB%A7%88%EC%B9%98%EB%A9%B0">마치며…</a></li>
 </ul>
 </div></div></div></div><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1125098373921970" crossorigin="anonymous"></script><div class="post-cards-adjacent-wrapper"><div class="post-cards-adjacent"><a class="post-card next" href="/azure-oracle19/"><div class="direction">이전 글</div><div class="title">[AZURE] Oracle 19c 설치, LogMiner, CDC 설정하기 From Azure VM</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/nasa1515">NASA1515</a> powered by<a href="https://github.com/nasa1515"> me</a></p></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/data-kafka-wsl/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-384ea82b9c97dbd7ee60.js"],"app":["/app-af51a7650cca06e0cb78.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-241020a1cf7d0f317bbe.js"],"component---src-pages-404-js":["/component---src-pages-404-js-18966798326ae6e5a169.js"],"component---src-pages-about-js":["/component---src-pages-about-js-84e9a8898a75d784d036.js"],"component---src-pages-index-js":["/component---src-pages-index-js-f84ef0a3c1ad5840da0a.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-527d926a66cb09d51c39.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-d01b478dab935d07b01d.js"]};/*]]>*/</script><script src="/polyfill-384ea82b9c97dbd7ee60.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-527d926a66cb09d51c39.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-1230b370c40f1a824092.js" async=""></script><script src="/styles-407fe62976dc5310c43e.js" async=""></script><script src="/app-af51a7650cca06e0cb78.js" async=""></script><script src="/framework-81279cacaab4bdba7685.js" async=""></script><script src="/webpack-runtime-1eb9c1268f8d13464f22.js" async=""></script></body></html>
