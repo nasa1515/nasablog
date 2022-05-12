@@ -1035,32 +1035,17 @@ Confluent Kafka REST 설치
 
   ![image](https://user-images.githubusercontent.com/69498804/167564283-6c6bccc9-fa6e-4f79-be20-2dc0488e4829.png)
 
-
-
 <br/>
 
-<br/>
-
-<br/>
-
-<br/>
-
-<br/>
-
-<br/>
-
-<br/>
-
-<br/>
-
-<br/>
-
-
+---
 
 ## 마치며…  
 
-
-<br/>
+사실 이번 포스트에서 구축한 Kafka Broker Cluster의 목적은  
+Public Cloud 별로 존재하는 Streaming Tools을 확인해보기 위함입니다.  
+생각보다 구축 포스트가 길어져서 부득이하게 포스트를 여러개로 나눠야 할 것 같습니다.  
+다음 포스트에서는 Ptyhon을 사용해 Kafka Producer Application을 생성하고  
+Event Message를 Cloud로 보내는 방법에 대해서 정리하겠습니다.  
 
 ---
 
