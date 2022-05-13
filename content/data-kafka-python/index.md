@@ -41,7 +41,7 @@ third party Clinet를 사용 할 수 있는데 java, python, go 등이 있습니
 ## 😍 Azure EventHub Connection
 
 우선 첫번째 순서로는 가장 Kafka Connector에 대한 호환이 잘 운영되고 있는 Azure EventHub 부터 진행하도록 하겠습니다.  
-Azure는 엄청 간단하게 Producer를 만들 때 Config에 bootstrap 쪽의 설정만 EventHub의 Endpoint 쪽으로만 설정해주면 됩니다.  
+Azure는 엄청 간단하게 Producer를 만들 때 Config에 bootstrap 쪽의 설정만 EventHub의 Endpoint 쪽으로만 설정해주면 됩니다. [참고 Github](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/python)
 
 
 <br/>
@@ -341,7 +341,98 @@ Azure는 엄청 간단하게 Producer를 만들 때 Config에 bootstrap 쪽의 �
 ## 😁 GCP Pub/Sub Connection
 
 
-  ---
+
+### Producer Application Code Test
+
+* Used Producer Source CODE [Message Publish]
+
+  ```js
+  import json
+  from google.auth import jwt
+  from concurrent import futures
+  from google.cloud import pubsub_v1
+
+  service_account_info = json.load(open("/home/nasa1515/docker/producer/GCP/data-cloocus-ffd800735dd1.json"))
+  credentials_pub = "https://pubsub.googleapis.com/google.pubsub.v1.Publisher"
+
+  credentials = jwt.Credentials.from_service_account_info(
+      service_account_info, audience=credentials_pub
+  )
+
+  publisher = pubsub_v1.PublisherClient(credentials=credentials)
+
+
+  project_id = "data-cloocus"
+  topic_id = "pubsub_nasa1515"
+
+  topic_path = publisher.topic_path(project_id, topic_id)
+
+  for n in range(1, 100):
+      data_str = f"nasa1515_Pubsub_Massage : {n}"
+      data = data_str.encode("utf-8")
+      future = publisher.publish(topic_path, data)
+      print(future.result())
+
+  print(f"Published messages to {topic_path}.")
+  ```
+
+
+<br/>
+
+
+
+### Consumer Application CODE Test
+
+<br/>
+
+* Used Consumer Source CODE [Message Consume]
+
+  ```js
+  import os
+  import json
+  from google.auth import jwt
+  from google.cloud import pubsub_v1
+
+
+  service_account_info = json.load(open("/home/nasa1515/docker/producer/GCP/data-cloocus-ffd800735dd1.json"))
+  credentials_sub = "https://pubsub.googleapis.com/google.pubsub.v1.Subscriber"
+
+  credentials = jwt.Credentials.from_service_account_info(
+      service_account_info, audience=credentials_sub
+  )
+
+  subscriber = pubsub_v1.SubscriberClient(credentials=credentials)
+
+
+  project_id = "data-cloocus"
+  topic_id = "pubsub_nasa1515"
+  subscription = "pubsub_nasa1515-sub"
+  topic_name = f'projects/{project_id}/topics/{topic_id}'
+  subscription_name = f'projects/{project_id}/subscriptions/{subscription}'
+
+
+  def callback(message):
+      print(message.data)
+      message.ack()
+
+
+  with pubsub_v1.SubscriberClient() as subscriber:
+      try:
+          response = subscriber.get_subscription(subscription=subscription_name)
+          print(response)
+      except:
+          subscriber.create_subscription(
+          name=subscription_name, topic=topic_name)
+          future = subscriber.subscribe(subscription_name, callback)
+      else:
+          future = subscriber.subscribe(subscription_name, callback)
+          try:
+              future.result()
+          except KeyboardInterrupt:
+              future.cancel()
+  ```
+  
+---
 
 ## 마치며…  
 
